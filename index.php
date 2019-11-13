@@ -17,6 +17,19 @@
         width: 40%;
         padding: 10px 28px;
         font-size: 16px;
+        background-color: none;
+        text-decoration: none;
+        border: 2px solid black;
+        }
+        .nuevobtn:hover{
+        float: right;
+        width: 40%;
+        padding: 10px 28px;
+        font-size: 16px;
+        background-color: #28a745;
+        color:white;
+        text-decoration: none;
+        border: 2px solid black;
         }
         .accederbtn{
         width: 40%;
@@ -41,13 +54,14 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Eps Sena Bienvenidos</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Eps Sena</a>
     </div>
     </nav>
         <!-- Header -->
         <header class="masthead bg-white text-secondary text-center">
             <div class="container">
             <!-- Titulo Inicio -->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bienvenido</h2><br>
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulario Registro de Usuarios</h2>
             <!-- Icon Divisor -->
             <div class="divider-custom">
@@ -60,7 +74,7 @@
         <!--Formulario datos paciente-->
             <div class="flex-row">
             <div class="col-md-6 ">
-	        <form role="form" name="" action="procesos/login.php" method="post">
+	        <form role="form" name="" action="php/guardar.php" method="post">
 		    <div class="form-group" >
 			<input type="text" class="form-control" name="documento" placeholder="Documento del usuario">
 		    </div>
@@ -76,40 +90,12 @@
 		    <div class="form-group">
 			<input type="text" class="form-control" name="telefono" placeholder="Telefono del usuario">
 		    </div>
-		        <a href="guardar.php"><button class="nuevobtn btn-outline-secondary" href="https://startbootstrap.com/themes/freelancer/" type="button">Guardar</button></a>
+		        <button class="nuevobtn btn" type="submit">Guardar</button></a>
 		        </form>
 		    </div>
             </div>
             </header>
-        <!-- Footer -->
-        <footer class="footer text-center bg-primary">
-            <div class="container">
-            <div class="row">
-        <!-- Footer Dirección -->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Sede Principal</h4>
-                <p class="lead mb-0">Av Calle 98 No. 76-45
-                <br>Clark, MO 65243</p>
-            </div>
-        <!-- Footer Redes Sociales -->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Siguenos en nuestras redes sociales</h4>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#">
-                    <i class="fab fa-fw fa-facebook-f"></i>
-                    </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#">
-                    <i class="fab fa-fw fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#">
-                    <i class="fab fa-fw fa-linkedin-in"></i>
-                    </a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#">
-                    <i class="fab fa-fw fa-dribbble"></i>
-                    </a>
-            </div>
-            </div>
-            </div>
-        </footer>
+        
         <!-- Copyright -->
         <section class="copyright py-4 text-center text-white ">
             <div class="container">

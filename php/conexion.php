@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "eps_sena");
+$mysqli = new mysqli("localhost","root","", "eps_sena");
 
 if (mysqli_connect_errno()) {
 	echo "Este sitio esta presentando problemas";
