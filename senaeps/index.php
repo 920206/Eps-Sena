@@ -63,7 +63,7 @@
             <!-- Titulo Inicio -->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bienvenido</h2><br>
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulario Registro de Usuarios</h2>
-            <!-- Icono Divisor -->
+            <!-- Icon Divisor -->
             <div class="divider-custom">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon">
