@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php
+    require_once "php/conexion.php";
+    if(isset($_GET['id'])){
+        $documento = $_GET['id'];
+        $query = "SELECT * FROM usuario WHERE documento=$documento";
+        $result = mysqli_query($mysqli,$query);
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_array($result);
+            $documento = $row['documento'];
+            $nombre = $row['nombre'];
+            $apellido =$row['apellido'];
+            $direccion = $row['direccion'];
+            $telefono = $row['teleffono'];
+}
+}
+?>
 <html lang="es">
     <head>
         <meta charset="utf-8">
@@ -40,14 +56,29 @@
         opacity: 0.6;
         cursor: pointer;
         }
-        .iniciar{
-        text-align: center;
-        }
+        
         .flex-row{
         display: flex;
         justify-content: center;
         }
+        .center{
+            text-align: left;
+        }
         </style>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+function mostrar(id) {
+    if (id == "Urgencias") {
+        $("#Urgencias").show();
+        $("#Medicina General").hide();
+        $("#Odontologia").hide();
+        $("#Prioritaria").hide();
+    }
+
+}
+</script>
+
     </head>
     <!-- Body -->
     <body id="page-top">
@@ -60,44 +91,46 @@
         <!-- Header -->
         <header class="masthead bg-white text-secondary text-center">
             <div class="container">
-            <!-- Titulo Inicio -->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bienvenido</h2><br>
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulario Registro de Usuarios</h2>
-            <!-- Icon Divisor -->
-            <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-                <i class="fas fa-star"></i>
-            </div>
-            <div class="divider-custom-line"></div>
-            </div>
+
         <!--Formulario datos paciente-->
-            <div class="flex-row">
-            <div class="col-md-6 ">
-	        <form role="form" name="" action="php/guardar.php" method="post">
-		    <div class="form-group" >
-			<input type="text" class="form-control" name="documento" placeholder="Documento del usuario">
+            <div class="row">
+            <div class="col-md-7 col-lg-7">
+	        <form role="form" name="" action="php/guardarcita.php?id=<?php echo $documento?>" method="post">
+		    <div class="form-group center" >
+			<h5>Paciente: <?php echo $nombre." ".$apellido;?></h5>
+            <h5>Documento: <?php echo $documento?></h5><br>
 		    </div>
-		    <div class="form-group" >
-			<input type="text" class="form-control" name="nombre" placeholder="Nombre del usuario">
-		    </div>
-		    <div class="form-group" >
-			<input type="text" class="form-control" name="apellido" placeholder="Apellido del usuario">
-		    </div>
-		    <div class="form-group" >
-			<input type="text" class="form-control" name="direccion" placeholder="Direccion del usuario">
-		    </div>
-		    <div class="form-group">
-			<input type="text" class="form-control" name="telefono" placeholder="Telefono del usuario">
-		    </div>
-		        <button class="nuevobtn btn" type="submit">Guardar</button></a>
+		    <div class="form-group center" >
+			<h4>Por favor seleccione el tipo de cita</h4>
+            <select class="form-control" name="cita">
+                <option>Seleccione una opcion</option>
+                <option>Medicina General</option>
+                <option>Odontologia</option>
+                <option>Prioritaria</option>
+                <option>Urgencias</option>
+            </select> <br>
+        
+          <!---  <div class="form-group center" id="Urgencias" style="display: none;">
+                <h5>Seleccione el tipo de urgencias</h5>
+                <select class="form-control">
+                    <option>Triage I</option>
+                    <option>Triage II</option>
+                    <option>Triage III</option>
+                    <option>Triage IIIB</option>
+                    <option>Triage IV</option>
+                </select>
+            </div>-->
+            
+		   
+		        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
 		        </form>
+
 		    </div>
-            </div>
+            
             </header>
         
         <!-- Copyright -->
-        <section class="copyright py-4 text-center text-white ">
+        <section class="copyright py-4 text-center text-white fixed-bottom ">
             <div class="container">
                 <small>Copyright &copy; Sena Eps 2019</small>
             </div>
@@ -119,4 +152,5 @@
         <!-- Custom scripts for this template -->
         <script src="js/freelancer.min.js"></script>
     </body>
+   
 </html>
