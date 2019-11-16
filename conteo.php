@@ -12,8 +12,8 @@
             $apellido =$row['apellido'];
             $direccion = $row['direccion'];
             $telefono = $row['teleffono'];
-}
-}
+            }
+        }
 ?>
 <html lang="es">
     <head>
@@ -67,17 +67,16 @@
         </style>
 
         <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript">
-function mostrar(id) {
-    if (id == "Urgencias") {
-        $("#Urgencias").show();
-        $("#Medicina General").hide();
-        $("#Odontologia").hide();
-        $("#Prioritaria").hide();
-    }
-
-}
-</script>
+        <script type="text/javascript">
+            function mostrar(id) {
+            if (id == "Urgencias") {
+            $("#Urgencias").show();
+            $("#Medicina General").hide();
+            $("#Odontologia").hide();
+            $("#Prioritaria").hide();
+            }
+            }
+        </script>
 
     </head>
     <!-- Body -->

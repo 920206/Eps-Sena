@@ -65,20 +65,17 @@
             
         }
         </style>
-
-        <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript">
-function mostrar(id) {
-    if (id == "Urgencias") {
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        function mostrar(id) {
+        if (id == "Urgencias") {
         $("#Urgencias").show();
         $("#Medicina General").hide();
         $("#Odontologia").hide();
         $("#Prioritaria").hide();
-    }
-
-}
-</script>
-
+            }
+        }
+        </script>
     </head>
     <!-- Body -->
     <body id="page-top">
@@ -103,12 +100,9 @@ function mostrar(id) {
             $clasif = $row['clasificacion'];
             $fecha = $row['fecha_cita'];
             $hora = $row['hora_cita'];
-            
-}
-
-                ?>
-
-                 <?php
+            }
+            ?>
+            <?php
                 $sql= "SELECT * FROM doctores WHERE documento=$doctor";
                 $result = mysqli_query($mysqli,$sql);
         if (mysqli_num_rows($result) == 1) {
@@ -116,10 +110,8 @@ function mostrar(id) {
             $nombredoc = $row['nombre'];
             $apellidodoc =$row['apellido'];
             $especialidad =$row['especialidad'];
-            
-            
-}
-?>
+            }
+            ?>
         <!--Formulario datos paciente-->
             <div class="row">
             <div class="col-md-12 col-lg-12">
@@ -138,41 +130,33 @@ function mostrar(id) {
             <h5>Valor de la cita: </h5><p><?php echo $valor ?></p>
             <h5>Fecha de la cita: </h5><p><?php echo $fecha ?></p>
             <h5>Hora de la cita: </h5><p><?php echo $hora ?></p>         
-               </div><br>
-
-       
-            
-            
-		   <!-- Button trigger modal -->
-<button type="button" class="nuevobtn btn" data-toggle="modal" data-target="#exampleModalCenter">
- Finalizar
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Completado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Se han guardado los datos de la cita exitosamente!
-      </div>
-      <div class="modal-footer">
-        <a href="index.php" class="nuevobtn btn">Agregar Otro Paciente</a>
-        <a href="conteo.php" class="nuevobtn btn">Terminar</a>
-      </div>
-    </div>
-  </div>
-</div>
-		        
+            </div><br>
+                        
+            <!-- Button trigger modal -->
+                <button type="button" class="nuevobtn btn" data-toggle="modal" data-target="#exampleModalCenter">
+                 Finalizar</button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Completado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            Se han guardado los datos de la cita exitosamente!
+            </div>
+            <div class="modal-footer">
+                <a href="index.php" class="nuevobtn btn">Agregar Otro Paciente</a>
+                <a href="conteo.php" class="nuevobtn btn">Terminar</a>
+            </div>
+            </div>
+            </div>
+            </div>
 		    </div>
-            
-            </header>
-        
+        </header>
         <!-- Copyright -->
         <section class="copyright py-4 text-center text-white sticky-bottom ">
             <div class="container">
@@ -180,11 +164,11 @@ function mostrar(id) {
             </div>
         </section>
          <!-- Scroll -->
-            <div class="scroll-to-top d-lg-none position-fixed ">
-                <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-                <i class="fa fa-chevron-up"></i>
-                </a>
-            </div>
+        <div class="scroll-to-top d-lg-none position-fixed ">
+            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

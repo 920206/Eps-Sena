@@ -65,20 +65,17 @@
             text-align: left;
         }
         </style>
-
-        <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript">
-function mostrar(id) {
-    if (id == "Urgencias") {
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        function mostrar(id) {
+        if (id == "Urgencias") {
         $("#Urgencias").show();
         $("#Medicina General").hide();
         $("#Odontologia").hide();
         $("#Prioritaria").hide();
-    }
-
-}
-</script>
-
+        }
+        }
+        </script>
     </head>
     <!-- Body -->
     <body id="page-top">
@@ -91,7 +88,6 @@ function mostrar(id) {
         <!-- Header -->
         <header class="masthead bg-white text-secondary text-center">
             <div class="container">
-
         <!--Formulario datos paciente-->
             <div class="row">
             <div class="col-md-7 col-lg-7">
@@ -101,7 +97,7 @@ function mostrar(id) {
 			<h5>Paciente: <?php echo $nombre." ".$apellido;?></h5>
             <h5>Documento: <?php echo $documento?></h5><br>
 		    </div>
-
+        <!--Formulario datos cita-->
 		    <div class="form-group center" >
 			<h5>Seleccione el tipo de cita</h5>
             <select class="form-control" name="cita">
@@ -134,11 +130,12 @@ function mostrar(id) {
                         echo '<option value="'.$valores[documento].'">'."   ".''.$valores[especialidad].''." -- CC: ".''.$valores[documento].''." - ".''.$valores[nombre].''." ".''.$valores[apellido].'</option>';
                     }
                 ?>
+            <!--Fecha cita-->    
             </select><br>
-            <h5>Seleccione la fecha de su cita:</h5>
-            <p>Recuerde que si el paciente ingresa por urgencias debe ser atendido el mismo dia de ingreso*</p>
-            <input type="date" name="dia" class="form-control"><br>
-
+                <h5>Seleccione la fecha de su cita:</h5>
+                <p>Recuerde que si el paciente ingresa por urgencias debe ser atendido el mismo dia de ingreso*</p>
+                <input type="date" name="dia" class="form-control"><br>
+            <!--Hora cita-->
             <h5>Seleccione la hora de su cita:</h5>
             <p>Si el paciente fue valorado como TRIEAGE I el paciente tiene que ser atendido inmediatamente*</p>
             <select class="form-control" name="hora">
@@ -154,21 +151,18 @@ function mostrar(id) {
                 <option>04:00 PM</option>
                 <option>05:00 PM</option>
             </select><br>
-		   
+                <!--Boton Guardar Datos--> 
 		        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-		        </form>
-                
-		    </div>
-            
-            </header>
-        
+		    </form>
+            </div>
+        </header>
         <!-- Copyright -->
         <section class="copyright py-4 text-center text-white sticky-bottom ">
             <div class="container">
                 <small>Copyright &copy; Sena Eps 2019</small>
             </div>
         </section>
-         <!-- Scroll -->
+        <!-- Scroll -->
             <div class="scroll-to-top d-lg-none position-fixed ">
                 <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
                 <i class="fa fa-chevron-up"></i>
@@ -185,5 +179,4 @@ function mostrar(id) {
         <!-- Custom scripts for this template -->
         <script src="js/freelancer.min.js"></script>
     </body>
-   
 </html>

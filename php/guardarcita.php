@@ -25,7 +25,7 @@
 	if ($mysqli->query($query)) {
 		header ("location:../citas3.php?id=$documento");
 	}else{
-		print "<script>alert(\"Ocurrio un error.\");window.location='../index.php';</script>";
+		print "<script>alert(\"Selecciono la opción Triage IV al paciente se le debe asignar una cita prioritaria.\");window.location='../index.php';</script>";
 			}
 
 ?>
