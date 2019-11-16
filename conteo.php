@@ -97,68 +97,73 @@ function mostrar(id) {
             <div class="col-md-7 col-lg-7">
 	        <form role="form" name="" action="php/guardarcita.php?id=<?php echo $documento?>" method="post">
 		    <div class="form-group center" >
-            <h4>Datos del paciente ingresado</h4>    
-			<h5>Paciente: <?php echo $nombre." ".$apellido;?></h5>
-            <h5>Documento: <?php echo $documento?></h5><br>
+            
 		    </div>
 
 		    <div class="form-group center" >
-			<h5>Seleccione el tipo de cita</h5>
-            <select class="form-control" name="cita">
-                <option>Seleccionar</option>
-                <option>Medicina General</option>
-                <option>Odontologia</option>
-                <option>Prioritaria</option>
-                <option>Urgencias</option>
-            </select> <br>
-                <h5>Seleccione la clasificacion de la cita:</h5>
-                <p>Si el paciente ingresa por urgencias porfavor seleccione el nivel de triage segun la condicion del paciente de lo contrario seleccione segun la especialidad que necesita el paciente* </p>
-                <select class="form-control" name="tipo">
-                    <option>Seleccionar</option>
-                    <option>Triage I</option>
-                    <option>Triage II</option>
-                    <option>Triage III</option>
-                    <option>Triage IIIB</option>
-                    <option>Triage IV</option>
-                    <option>Cita Medicina General</option>
-                    <option>Cita Odontologica</option>
-                    <option>Cita Prioritaria</option>
-                </select><br>
-                <h5>Seleccione un Doctor:</h5>
-                <p>Seleccione un doctor de acuerdo al tipo de cita seleccionado. Si el paciente ingresa por urgencias seleccione el doctor segun la valoracion del Triage dada.*</p>
-            <select class="form-control" name="doctor">
-                <option>Selecionar</option>
-                <?php 
-                $query = $mysqli -> query ("SELECT * FROM doctores  ");
-                    while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores[documento].'">'."   ".''.$valores[especialidad].''." -- CC: ".''.$valores[documento].''." - ".''.$valores[nombre].''." ".''.$valores[apellido].'</option>';
-                    }
-                ?>
-            </select><br>
-            <h5>Seleccione la fecha de su cita:</h5>
-            <p>Recuerde que si el paciente ingresa por urgencias debe ser atendido el mismo dia de ingreso*</p>
-            <input type="date" name="dia" class="form-control"><br>
+			<?php
+            $sql2 = $mysqli->query("SELECT * FROM usuario  ORDER BY documento DESC ");
+            $totalp = $sql2->num_rows;
 
-            <h5>Seleccione la hora de su cita:</h5>
-            <p>Si el paciente fue valorado como TRIEAGE I el paciente tiene que ser atendido inmediatamente*</p>
-            <select class="form-control" name="hora">
-                <option>Selecionar</option>
-                <option>08:00 AM</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 MM</option>
-                <option>01:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select><br>
-		   
-		        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-		        </form>
-                
+            $sql3 = $mysqli->query("SELECT * FROM cita_medica WHERE tipo_de_cita = 'Medicina General'  ORDER BY documento_usuario DESC ");
+            $medicina = $sql3->num_rows;
+
+            $sql4 = $mysqli->query("SELECT * FROM cita_medica WHERE tipo_de_cita = 'Odontologia'  ORDER BY documento_usuario DESC  ");
+            $odontologia = $sql4->num_rows;
+
+            $sql5 = $mysqli->query("SELECT * FROM cita_medica WHERE tipo_de_cita = 'Prioritaria'  ORDER BY documento_usuario DESC ");
+            $prio = $sql5->num_rows;
+
+            $sql6 = $mysqli->query("SELECT * FROM cita_medica WHERE tipo_de_cita = 'Urgencias'  ORDER BY documento_usuario DESC  ");
+            $urgen = $sql6->num_rows;
+
+            $sql7 = $mysqli->query("SELECT * FROM cita_medica WHERE clasificacion = 'Triage I'  ORDER BY documento_usuario DESC  ");
+            $t1 = $sql7->num_rows;
+
+            $sql8 = $mysqli->query("SELECT * FROM cita_medica WHERE clasificacion = 'Triage II'  ORDER BY documento_usuario DESC  ");
+            $t2 = $sql8->num_rows;
+
+            $sql9 = $mysqli->query("SELECT * FROM cita_medica WHERE clasificacion = 'Triage III'  ORDER BY documento_usuario DESC  ");
+            $t3 = $sql9->num_rows;
+
+            $sql = $mysqli->query("SELECT * FROM cita_medica WHERE clasificacion = 'Triage IIIB'  ORDER BY documento_usuario DESC  ");
+            $t3s = $sql->num_rows;
+
+            $result = $mysqli->query("SELECT sum(valor_cita) AS valortotal FROM cita_medica");
+            $row = mysqli_fetch_assoc($result); 
+            $suma1 = $row['valortotal'];
+
+            $result2 = $mysqli->query("SELECT sum(valor_cita) AS valortotal FROM cita_medica WHERE tipo_de_cita='Medicina General'");
+            $row = mysqli_fetch_assoc($result2); 
+            $suma2 = $row['valortotal'];
+
+            $result3 = $mysqli->query("SELECT sum(valor_cita) AS valortotal FROM cita_medica WHERE tipo_de_cita='Odontologia'");
+            $row = mysqli_fetch_assoc($result3); 
+            $suma3 = $row['valortotal'];
+
+            $result4 = $mysqli->query("SELECT sum(valor_cita) AS valortotal FROM cita_medica WHERE tipo_de_cita='Prioritaria'");
+            $row = mysqli_fetch_assoc($result4); 
+            $suma4 = $row['valortotal'];
+            ?>
+
+            <h3>Total Pacientes: <?php echo $totalp ?></h3>
+            <h3>Total Pacientes Medicina General: <?php echo $medicina ?></h3>
+            <h3>Total Pacientes Odontologia: <?php echo $odontologia ?></h3>
+            <h3>Total Pacientes Prioritaria: <?php echo $prio ?></h3>
+            <h3>Total Pacientes Urgencias: <?php echo $urgen ?></h3> <br>
+            <h3>Total Pacientes Urgencias Triage I: <?php echo $t1 ?></h3>
+            <h3>Total Pacientes Urgencias Triage II: <?php echo $t2 ?></h3>
+            <h3>Total Pacientes Urgencias Triage III: <?php echo $t3 ?></h3>
+            <h3>Total Pacientes Urgencias Triage IIIB: <?php echo $t3s ?></h3><br><br>
+
+            <h2>Recaudo</h2>
+            <h3>Total recaudo medicina general: $<?php echo $suma2 ?></h3>
+            <h3>Total recaudo odontologia: $<?php echo $suma3 ?></h3>
+            <h3>Total recaudo prioritaria: $<?php echo $suma4 ?></h3>
+            <h3>Total recaudo: $<?php echo $suma1 ?> </h3>
 		    </div>
+
+            <a href="index.php" class="nuevobtn btn">Salir</a>
             
             </header>
         

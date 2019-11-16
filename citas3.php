@@ -62,7 +62,7 @@
         justify-content: center;
         }
         .center{
-            text-align: left;
+            
         }
         </style>
 
@@ -97,16 +97,19 @@ function mostrar(id) {
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_array($result);
             $documento1 = $row['documento_usuario'];
-            $tipo= $row['tipo_de_cita'];
-            $docudoctor= $row['documento_medico'];
-            $clasi = $row['clasificacion'];
+            $tipo = $row['tipo_de_cita'];
+            $valor = $row['valor_cita'];
+            $doctor = $row['documento_medico'];
+            $clasif = $row['clasificacion'];
+            $fecha = $row['fecha_cita'];
+            $hora = $row['hora_cita'];
             
 }
 
                 ?>
 
                  <?php
-                $sql= "SELECT * FROM doctores WHERE documento=$docudoctor";
+                $sql= "SELECT * FROM doctores WHERE documento=$doctor";
                 $result = mysqli_query($mysqli,$sql);
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_array($result);
@@ -119,144 +122,59 @@ function mostrar(id) {
 ?>
         <!--Formulario datos paciente-->
             <div class="row">
-            <div class="col-md-7 col-lg-7">
+            <div class="col-md-12 col-lg-12">
 	        
 		    <div class="form-group center" >
 			<h5>Paciente: <?php echo $nombre." ".$apellido;?> </h5>
             <h5>Documento: <?php echo $documento1 ?></h5>
+            <h5>Telefono: <?php echo $telefono ?></h5>
+            <br>
+
+            <h4>Datos de la cita:</h4><br>
 		    
-			<h5>Tipo de cita: <?php echo $tipo ?></h5>
-            <h5>Clasificacion de cita: <?php echo $clasi ?></h5>
-            <h5>Doctor: <?php echo $nombredoc." ".$apellidodoc ?></h5>
-            </div><br>
+			<h5>Tipo de cita:</h5><p> <?php echo $tipo ?></p>
+            <h5>Clasificacion de cita:</h5><p> <?php echo $clasif ?></p>
+            <h5>Doctor: </h5><p><?php echo $nombredoc." ".$apellidodoc ?></p>
+            <h5>Valor de la cita: </h5><p><?php echo $valor ?></p>
+            <h5>Fecha de la cita: </h5><p><?php echo $fecha ?></p>
+            <h5>Hora de la cita: </h5><p><?php echo $hora ?></p>         
+               </div><br>
 
-        <!--Formulario Datos Doctor segun especialidad-->    
-            <?php
-            if($tipo =='Medicina General'){
-            ?>
-            <form role="form" name="" action="php/guardardoctor.php?id=$documento" method="post">
-             <div class="form-group center">
-            <h5>Seleccione la fecha de su cita:</h5>
-            <input type="date" name="dia" class="form-control">
-            <h5>Seleccione la hora de su cita:</h5>
-            <select class="form-control" name="doctor">
-                <option>Selecionar</option>
-                <option>08:00 AM</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 MM</option>
-                <option>01:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select>
-        </div>
-        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-        </form>
-
-        <?php
-    }
-    ?>
-<?php
-            if($tipo =='Odontologia'){
-            ?>
-            <form role="form" name="" action="php/guardardoctor.php?id=$documento" method="post">
-             <div class="form-group center">
-            <h5>Seleccione la fecha de su cita:</h5>
-            <input type="date" name="dia" class="form-control">
-            <h5>Seleccione la hora de su cita:</h5>
-            <select class="form-control" name="doctor">
-                <option>Selecionar</option>
-                <option>08:00 AM</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 MM</option>
-                <option>01:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select>
-        </div>
-        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-        </form>
-
-        <?php
-    }
-    ?>
-
-
-<?php
-            if($tipo =='Prioritaria'){
-            ?>
-            <form role="form" name="" action="php/guardardoctor.php?id=$documento" method="post">
-             <div class="form-group center">
-            <h5>Seleccione la fecha de su cita:</h5>
-            <input type="date" name="dia" class="form-control">
-            <h5>Seleccione la hora de su cita:</h5>
-            <select class="form-control" name="doctor">
-                <option>Selecionar</option>
-                <option>08:00 AM</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 MM</option>
-                <option>01:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select>
-        </div>
-        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-        </form>
-
-        <?php
-    }
-    ?>
-
-
-    <?php
-            if($tipo =='Urgencias'){
-            ?>
-            <form role="form" name="" action="php/guardardoctor.php?id=$documento" method="post">
-             <div class="form-group center">
-                <h5>Seleccione la fecha de su cita:</h5>
-            <input type="date" name="dia" class="form-control">
-            <h5>Seleccione la hora de su cita:</h5>
-            <select class="form-control" name="doctor">
-                <option>Selecionar</option>
-                <option>08:00 AM</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 MM</option>
-                <option>01:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select>
-        </div>
-        <button class="nuevobtn btn" type="submit">Siguiente</button></a>
-        </form>
-
-        <?php
-    }
-    ?>
-
+       
             
-		   
+            
+		   <!-- Button trigger modal -->
+<button type="button" class="nuevobtn btn" data-toggle="modal" data-target="#exampleModalCenter">
+ Finalizar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Completado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Se han guardado los datos de la cita exitosamente!
+      </div>
+      <div class="modal-footer">
+        <a href="index.php" class="nuevobtn btn">Agregar Otro Paciente</a>
+        <a href="conteo.php" class="nuevobtn btn">Terminar</a>
+      </div>
+    </div>
+  </div>
+</div>
 		        
 		    </div>
             
             </header>
         
         <!-- Copyright -->
-        <section class="copyright py-4 text-center text-white fixed-bottom ">
+        <section class="copyright py-4 text-center text-white sticky-bottom ">
             <div class="container">
                 <small>Copyright &copy; Sena Eps 2019</small>
             </div>
